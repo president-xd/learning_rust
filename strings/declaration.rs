@@ -33,13 +33,13 @@ fn main() {
         - At Last: the case is of ownership of this variable.
         - It is already changed, we don't need to_owned() function (for its ownership).
     */
-    let string2: String = "string2".to_string();
+    let string2: String = "string2.".to_string();
     // 4. Empty Variable Declaration
     let string3: String = String::new();
 
     // 5. Using String::from()
     /*
-    - Equivalent to: std::string string2 = "string2";
+    - Equivalent to: std::string string4 = "string2";
     - Owned, mutable, heap-allocated
     - Another common way of creating a String
     */
@@ -47,6 +47,7 @@ fn main() {
 
     // 6. From other variables (&str to String using to_owned)
     /*
+    - Equivalent to: std::string string5 = s_slice;
     - Converts a &str to an owned String (alternative to to_string)
     */
     let s_slice: &str = "temporary";
@@ -54,6 +55,7 @@ fn main() {
 
     // 7. Using format! macro (like C++ std::stringstream or sprintf)
     /*
+    - Equivalent to: std::string string6 = "Hello," + " " + name;
     - Useful for dynamic or formatted strings
     */
     let name = "Rust";
@@ -63,6 +65,13 @@ fn main() {
     /*
     - When working with raw byte buffers (Vec<u8>)
     - Similar to casting byte arrays to strings in C++
+    
+    - unwrap() function is used to extract the value inside a Result or Option 
+      type, and it will panic (crash) the program if the value is Err or None.
+      
+    - String::from_utf8(bytes) returns a Result<String, FromUtf8Error>.
+    - This means: it might succeed (returning Ok(String)), or it might fail if the bytes are not valid UTF-8 (Err).
+    - Using .unwrap() extracts the String from the Ok(...), or panics if there's an error.
     */
     let bytes = vec![82, 117, 115, 116]; // 'R', 'u', 's', 't'
     let string7 = String::from_utf8(bytes).unwrap(); // "Rust"
@@ -70,9 +79,11 @@ fn main() {
     // 9. Using repeat() to create repeated patterns
     /*
     - Like creating a string with multiple repeated characters
+    
+    - repeat() function is used to repeat a certain part of string to n times.
     */
     let string8 = "abc".repeat(3); // "abcabcabc"
-    
+
 
     // Printing Strings
     println!("The value of string : {}", string);
@@ -84,5 +95,5 @@ fn main() {
     println!("The value of string6 : {}", string6);
     println!("The value of string7 : {}", string7);
     println!("The value of string8 : {}", string8);
-    
+
 }
