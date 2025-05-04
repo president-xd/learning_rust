@@ -78,8 +78,38 @@ fn main() {
         //println!("The  case of string1 is {}", string1.to_lowercase());
     }
     
-    // 5. Joining of strings
+        // 5. Joining of strings
     {
-        
+        let string1: String = "first".to_string();
+        let string2: String = "second".to_string();
+        let concatenate: String = string1 + " " + &string2;
+
+        println!("The concatenate of string1 & string2 is {}", concatenate);
+    }
+
+    // 6. Another way of concatenation of strings
+    {
+        let string1: String = "first".to_string();
+        let string2: String = "second".to_string();
+        let concatenate: String = format!("{} {}", string1, string2);
+
+        println!("The concatenate of string1 & string2 is {}", concatenate);
+    }
+
+    // Example: Declaration of Vectors in Rust
+    {
+        let collected_iterator: Vec<i32> = (0..10).collect();
+        println!("Collected (0..10) into: {:?}", collected_iterator);
+
+        let vec: Vec<String> = Vec::new();
+        println!("Strings collected into: {:?}", vec);
+    }
+
+    // 7. Splitting Sentences into words using vectors
+    {
+        let sentence: String = "This is first our form of things".to_string();
+        let splited_words: Vec<&str> = sentence.split(" ").collect();
+
+        println!("The splited words of strings collected into: {:?}", splited_words);
     }
 }
