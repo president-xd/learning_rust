@@ -13,17 +13,18 @@ fn main() {
     let mut in_string: String = String::new();
     io::stdin().read_line(&mut in_string).expect("Failed to read the user from input");
 
-    if (secret_number == in_string.parse().unwrap()){
+    let guess: u32 = in_string.trim().parse().expect("Please enter a valid number");
 
+    if secret_number == guess {
         // Final Message to End to the Program
         println!("The secret number is correct");
         println!("You Won the Game");
         return;
     } else {
-        if (in_string.parse().unwrap() > secret_number){
-            println!("The secret number is greater than your guess, Try Harder");
+        if guess > secret_number {
+            println!("The secret number is lower than your guess, Try Harder");
         } else {
-            println!("The secret number is lower than your guess, Try Harder")
+            println!("The secret number is greater than your guess, Try Harder");
         }
 
         // Final Message to end the program
@@ -31,5 +32,4 @@ fn main() {
         println!("You Lost the Game");
         return;
     }
-
 }
