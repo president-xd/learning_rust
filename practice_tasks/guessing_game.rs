@@ -2,13 +2,11 @@ use std::io;
 use rand::Rng; // Crate to generate random numbers
 
 fn main() {
-    println!("########## Guessing Game ##########");
+    println!("################### Guessing Game ###################");
 
-    println!("Guess a number : ");
+    println!("------------------Guess a number------------------");
 
     let secret_number = rand::rng().random_range(1..100);
-
-    println!("The secret number is {}", secret_number);
 
     println!("Enter your guessed number : ");
 
@@ -24,5 +22,5 @@ fn main() {
         println!("You Lost the Game");
         return;
     }
-    
+
 }
