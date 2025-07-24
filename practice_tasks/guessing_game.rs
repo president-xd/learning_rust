@@ -24,8 +24,5 @@ fn main() {
         println!("You Lost the Game");
         return;
     }
-
-    in_string.cmp(&secret_number.to_string());
     
-    println!("The number you guessed was : {}", in_string);
 }
