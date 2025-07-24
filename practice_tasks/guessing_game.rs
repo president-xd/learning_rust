@@ -1,6 +1,16 @@
 use std::io;
 use rand::Rng; // Crate to generate random numbers
 
+// Cargo.toml Content
+// [package]
+// name = "guessing_game"
+// version = "0.1.0"
+// edition = "2024"
+
+// [dependencies]
+// rand = "0.9.2"
+
+
 fn main() {
     println!("################### Guessing Game ###################");
 
