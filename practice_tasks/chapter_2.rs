@@ -13,7 +13,14 @@ use std::cmp::Ordering; // Crate to compare the number with respect to its order
 
 
 fn main() {
-    println!("################### Guessing Game ###################");
+    println!("################### Chapter 2 ###################");
+    println!("-------------------------------------------------");
+    println!("Hello, Rustaceans!");
+    println!("We will learn, how to create a simple Guessing Game in Rust.");
+    println!(" Let's get started!");
+    println!("-------------------------------------------------");
+    println!("Website Link: https://www.president-xd.com/blog/programming_gussing_game_in_rust");
+    println!("-------------------------------------------------\n");
 
     // Random Number Generation using Rand Crate
     let s_number: u32 = rand::rng().random_range(1..101);
