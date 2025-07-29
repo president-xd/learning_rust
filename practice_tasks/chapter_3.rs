@@ -5,7 +5,7 @@ fn main() {
     print!("We will learn Variables, and Mutability in Rust.");
     println!(" Let's get started!");
     println!("-------------------------------------------------");
-    println!("Website Link: https://www.president-xd.com/blog/programming_gussing_game_in_rust");
+    println!("Website Link: https://www.president-xd.com/blog/common_programming_concepts");
     println!("-------------------------------------------------\n");
 
     // Tasks:
