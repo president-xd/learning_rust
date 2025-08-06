@@ -6,7 +6,7 @@ fn main() {
     println!("################### Chapter 3 ###################");
     println!("-------------------------------------------------");
     println!("Hello, Rustaceans!");
-    print!("We will learn Variables, and Mutability in Rust.");
+    print!("We will learn about Data Types in Rust.");
     println!(" Let's get started!");
     println!("-------------------------------------------------");
     println!("Website Link: https://www.president-xd.com/blog/common_programming_concepts#variables-and-mutability-in-rust-");
