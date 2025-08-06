@@ -9,7 +9,7 @@ fn main() {
     print!("We will learn Variables, and Mutability in Rust.");
     println!(" Let's get started!");
     println!("-------------------------------------------------");
-    println!("Website Link: https://www.president-xd.com/blog/common_programming_concepts");
+    println!("Website Link: https://www.president-xd.com/blog/common_programming_concepts#variables-and-mutability-in-rust-");
     println!("-------------------------------------------------\n");
 
     // ============================================================
