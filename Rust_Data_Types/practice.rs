@@ -32,6 +32,77 @@ fn calc_average(array: [i32; 5]) -> f64 {
     average
 }
 
+// Task 7: Function
+fn array_reversal(array: [i32; 5]) -> [i32; 5] {
+    // Created new array to store elements
+    let mut array1: [i32; 5] = [0; 5];
+
+    // Length of the Array
+    let size = array.len();
+
+    // Reversing the Array
+    for i in 0..array.len() {
+        array1[size - i - 1] = array[i];
+    }
+
+    return array1;
+}
+
+// Fibonacci Series returning tuple of nth and n+1th term
+fn fib_calc(n: u32) -> (usize, usize) {
+    let mut a: usize = 0;
+    let mut b: usize = 1;
+
+    if n == 0 {
+        return (a, b);
+    }
+
+    for _ in 1..n {
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+
+    (a, b)
+}
+
+// Task 10: Function
+fn matrix_row_sum(matrix: [[i32; 3]; 3]) -> [i32; 3] {
+    let mut sum_array: [i32; 3] = [0; 3];
+
+    for i in 0..3 {
+        for j in 0..3 {
+            if i == 0 {
+                sum_array[0] += matrix[0][j];
+            } else if i == 1 {
+                sum_array[1] += matrix[1][j];
+            } else if i == 2 {
+                sum_array[2] += matrix[2][j];
+            } else {
+                continue;
+            }
+        }
+    }
+
+    sum_array
+}
+
+// Task 11: Function
+fn rgb_to_hex(rgb: (u8, u8, u8)) -> String {
+    let hex_rgb: (String, String, String) = (
+        format!("{:#X}", rgb.0),
+        format!("{:X}", rgb.1),
+        format!("{:X}", rgb.2),
+    );
+    let red_hex: String = hex_rgb.0;
+    let green_hex: String = hex_rgb.1;
+    let blue_hex: String = hex_rgb.2;
+
+    let hex_rgb: String = red_hex + &green_hex + &blue_hex;
+
+    hex_rgb
+}
+
 // Entry Point Function
 fn main() {
     // Task 1: Basic Scaler Operations
@@ -42,7 +113,6 @@ fn main() {
             - Prints them using println!.
             - Performs one arithmetic operation per numeric type and prints the result.
     */
-
     // Solution:
     {
         let integer: i32 = 56;
@@ -76,7 +146,6 @@ fn main() {
             - Access and print each element using indexing.
             - Destructure the tuple and print all values using variable bindings.
     */
-
     // Solution:
     {
         // Tuple Created
@@ -105,14 +174,13 @@ fn main() {
         - Print the first element.
         - Create and print a slice of the last three elements.
     */
-
     // Solution
     {
         // Creating the Array of 5 Integers
         let consider: [i32; 5] = [0, 1, 2, 3, 4];
 
         // Printing the first element
-        println!("The first element of the Array is {}", consider[1]);
+        println!("The first element of the Array is {}", consider[0]);
 
         // Creating and printing the slice of last three elements
         for index in 2..4 {
@@ -130,7 +198,6 @@ fn main() {
         - Use type annotations and float arithmetic.
         - Include user input using std::io.
     */
-
     // Solution:
     {
         // Loop for Valid Input
@@ -193,7 +260,6 @@ fn main() {
         - Takes a tuple (i32, bool) as input.
         - Returns a tuple (bool, i32) by swapping elements.
     */
-
     // Solution:
     {
         // Non Functional Way
@@ -241,7 +307,6 @@ fn main() {
             - Takes an array of f64 with 5 elements.
             - Returns the average as f64.
     */
-
     // Solution:
     {
         // Non-Functional Approach
@@ -278,4 +343,232 @@ fn main() {
         // Printing the output
         println!("The Average of the Array is : {}", average);
     }
+
+    // Task 7: Array Reversal
+    // Description:
+    /*
+        Create a function that:
+            - Takes a array of integers.
+            - Reverses it in-place (no Vec, no .reverse() shortcut).
+            - Prints before and after reversal.
+    */
+    // Solution:
+    {
+        // Non-funtional Approach
+        {
+            // Array Created
+            let array: [i32; 5] = [32, 45, 66, 34, 22];
+
+            // Printing the Array before reversal
+            println!("Array before traversal");
+            for i in 0..5 {
+                println!("Array index {i} element : {}", array[i]);
+            }
+
+            // Created new array to store elements
+            let mut array1: [i32; 5] = [0; 5];
+
+            // Length of the Array
+            let size = array.len();
+
+            // Reversing the Array
+            for i in 0..array.len() {
+                array1[size - i - 1] = array[i];
+            }
+
+            // Printing the Array after reversal
+            println!("Array after reversal: ");
+            for i in 0..5 {
+                println!("Array index {i} element : {}", array1[i]);
+            }
+        }
+
+        // Functional Approach
+        // Array Created
+        let array: [i32; 5] = [32, 45, 66, 34, 22];
+
+        // Printing the Array before reversal
+        println!("Array before traversal");
+        for i in 0..5 {
+            println!("Array index {i} element : {}", array[i]);
+        }
+
+        // Shadowed Variable for storing the reversed array
+        let array: [i32; 5] = array_reversal(array);
+
+        // Printing the Array after reversal
+        println!("Array after reversal: ");
+        for i in 0..5 {
+            println!("Array index {i} element : {}", array[i]);
+        }
+    }
+
+    // Task 8: Fibonacci with Tuple Return
+    // Description:
+    /*
+        Write a function:
+            - Takes a number n: u32
+            - Returns a tuple containing the nth and n + 1th the fibonacci numbers.
+    */
+    // Solution:
+    {
+        // Non Functional Approach
+        {
+            let mut a: usize = 0;
+            let mut b: usize = 1;
+
+            println!("Enter the number to find the fibonacci series: ");
+            let mut n: String = String::new();
+            std::io::stdin()
+                .read_line(&mut n)
+                .expect("Failed to read the line..\n");
+            let n: u32 = n.trim().parse().expect("Please enter a valid number");
+
+            if n == 0 {
+                println!("The fibonacci number at index {} is {}", n, a);
+                println!("The fibonacci number at index {} is {}", n + 1, b);
+            }
+
+            for _ in 1..n {
+                let c = a + b;
+                a = b;
+                b = c;
+            }
+
+            (a, b);
+
+            let fib_tuple: (usize, usize) = (a, b);
+            println!("The fibonacci number at index {} is {}", n, fib_tuple.0);
+            println!("The fibonacci number at index {} is {}", n + 1, fib_tuple.1);
+        }
+
+        // Functional Approach
+        println!("Enter the nth term to find fibonacci series: ");
+        let mut n: String = String::new();
+        std::io::stdin()
+            .read_line(&mut n)
+            .expect("Failed to read the line");
+
+        let n: u32 = n.trim().parse().expect("Kindly enter valid input");
+
+        let return_tuple: (usize, usize) = fib_calc(n);
+
+        println!("The {}th term of Fibonacci Series : {}", n, return_tuple.0);
+        println!(
+            "The {}th term of Fibonacci Series : {}",
+            n + 1,
+            return_tuple.1
+        );
+    }
+
+    // Task 9: Type Conversion & Overflows
+    // Description:
+    /*
+        Write a program that:
+            - Reads a number from input as String, parses it to u8, then converts to f64.
+            - Show what happens when the user enters a number > 255 (handle with Result).
+    */
+    // Solution:
+    {
+        loop {
+            let mut input: String = String::new();
+
+            println!("Enter the number to read : ");
+
+            std::io::stdin()
+                .read_line(&mut input)
+                .expect("Failed to read the input.");
+
+            let mut input: u8 = match input.trim().parse() {
+                Ok(num) => num,
+                Err(_) => {
+                    println!("Overflow, Kindly enter valid number.");
+                    continue;
+                }
+            };
+
+            let input: f64 = input as f64;
+            println!("The input you entered was : {}", input);
+            break;
+        }
+    }
+
+    // Task 10: Matrix Row Sum
+    // Description:
+    /*
+        - Create a 3x3 matrix using a nested array: [[i32; 3]; 3]
+        - Write a function that returns a Vec<i32> containing the sum of each row.
+    */
+    // Solution:
+    {
+        // Non-Functional Approach
+        {
+            let matrix: [[i32; 3]; 3] = [[5; 3]; 3];
+
+            let mut row_sum: [i64; 3] = [0; 3];
+
+            for i in 0..3 {
+                for j in 0..3 {
+                    if i == 0 {
+                        row_sum[0] = row_sum[0] + matrix[0][j] as i64;
+                    } else if i == 1 {
+                        row_sum[1] = row_sum[1] + matrix[1][j] as i64;
+                    } else if i == 2 {
+                        row_sum[2] = row_sum[2] + matrix[2][j] as i64;
+                    }
+                }
+            }
+
+            println!("The sum of the first row is : {}", row_sum[0]);
+            println!("The sum of the second row is : {}", row_sum[1]);
+            println!("The sum of the third row is : {}", row_sum[2]);
+        }
+
+        // Functional Approach
+        let matrix: [[i32; 3]; 3] = [[5; 3]; 3];
+
+        let sum_array: [i32; 3] = matrix_row_sum(matrix);
+
+        println!("The sum of the first row is : {}", sum_array[0]);
+        println!("The sum of the second row is : {}", sum_array[1]);
+        println!("The sum of the third row is : {}", sum_array[2]);
+    }
+
+    // Task 11: RGB Color Parser
+    // Description:
+    /*
+        - Given a tuple of (u8, u8, u8), representing RGB.
+        - Write a function that converts it to a hex string like "#FF00FF".
+    */
+
+    // Solution:
+    {
+        // Non Functional Approach
+        {
+            let rgb: (u8, u8, u8) = (0, 0, 255);
+
+            let hex_rgb: (String, String, String) = (
+                format!("{:#X}", rgb.0),
+                format!("{:X}", rgb.1),
+                format!("{:X}", rgb.2),
+            );
+            let red_hex: String = hex_rgb.0;
+            let green_hex: String = hex_rgb.1;
+            let blue_hex: String = hex_rgb.2;
+
+            let hex_rgb: String = red_hex + &green_hex + &blue_hex;
+            println!("The HEX value of the RGB color is : {}", hex_rgb);
+        }
+
+        // Functional Approach
+
+        // Tuple creation
+        let rgb: (u8, u8, u8) = (23, 255, 255);
+
+        // Function to convert them in HEX value and return string
+        let rgb_hex: String = rgb_to_hex(rgb);
+
+        println!("The HEX value of the RGB Colors is : {}", rgb_hex);
+    }
+
 }
