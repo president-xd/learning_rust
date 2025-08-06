@@ -105,6 +105,19 @@ fn rgb_to_hex(rgb: (u8, u8, u8)) -> String {
 
 // Entry Point Function
 fn main() {
+    // ============================================================
+    //                  Welcome / Chapter Introduction
+    // ============================================================
+
+    println!("################### Chapter 3 ###################");
+    println!("-------------------------------------------------");
+    println!("Hello, Rustaceans!");
+    print!("We will learn Variables, and Mutability in Rust.");
+    println!(" Let's get started!");
+    println!("-------------------------------------------------");
+    println!("Website Link: https://www.president-xd.com/blog/common_programming_concepts");
+    println!("-------------------------------------------------\n");
+
     // Task 1: Basic Scaler Operations
     // Description:
     /*
